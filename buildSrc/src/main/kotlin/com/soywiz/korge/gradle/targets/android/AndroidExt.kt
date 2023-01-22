@@ -202,7 +202,7 @@ fun Project.androidEmulatorStart() {
 
 fun Project.androidGetResourcesFolders(): Pair<List<File>, List<File>> {
     val targets = listOf(kotlin.metadata())
-    val mainSourceSets = targets.flatMap { it.compilations["main"].allKotlinSourceSets }
+    val mainSourceSets = targets.flatMap { it.compilations["main"].allKotlinSourceSetsFix }
 
     val resourcesSrcDirsBase = mainSourceSets.flatMap { it.resources.srcDirs } + listOf(file("src/androidMain/resources"), file("src/main/resources"))
     val resourcesSrcDirsBundle = project.korge.bundles.getPaths("android", resources = true, test = false)

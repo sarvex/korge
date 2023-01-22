@@ -61,7 +61,7 @@ fun Project.configureJavaScript() {
     afterEvaluate {
         val jsCreateIndexHtml = project.tasks.create("jsCreateIndexHtml", JsCreateIndexTask::class.java).also { task ->
             val jsMainCompilation = kotlin.js().compilations["main"]!!
-            val resourcesFolders: List<File> = jsMainCompilation.allKotlinSourceSets
+            val resourcesFolders: List<File> = jsMainCompilation.allKotlinSourceSetsFix
                 .flatMap { it.resources.srcDirs } + listOf(File(rootProject.rootDir, "_template"))
             task.resourcesFolders = resourcesFolders
             task.targetDir = generatedIndexHtmlDir

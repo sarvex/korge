@@ -61,7 +61,7 @@ fun Project.addGenResourcesTasks(): Project {
             compilation.defaultSourceSet.resources.srcDir(processedResourcesFolder)
 
             //val compilation = project.kotlin.targets.getByName(config.targetName).compilations.getByName(config.compilationName)
-            val folders: List<String> = compilation.allKotlinSourceSets.flatMap { it.resources.srcDirs }.filter { it != processedResourcesFolder }.map { it.toString() }
+            val folders: List<String> = compilation.allKotlinSourceSetsFix.flatMap { it.resources.srcDirs }.filter { it != processedResourcesFolder }.map { it.toString() }
 
             val korgeProcessedResources = tasks.create(
                 getKorgeProcessResourcesTaskName(target, compilation),
